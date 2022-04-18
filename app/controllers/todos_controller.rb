@@ -1,5 +1,5 @@
 class TodosController < ApplicationController
-  before_action :set_todo, only: %i[ show edit update destroy ]
+  before_action :set_todo, only: %i[ show edit update destroy change_status ]
 
   # GET /todos or /todos.json
   def index
@@ -49,6 +49,14 @@ class TodosController < ApplicationController
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @todo.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def change_status
+    @todo.update(status: todo_params[:status])
+    respond_to do |format|
+      format.turbo_stream { render turbo_stream: turbo_stream.remove("#{helpers.dom_id(@todo)}_container") }
+      format.html { redirect_to todos_path, notice: "Updated todo status." }
     end
   end
 

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :todos
+  resources :todos do
+    patch :change_status, on: :member
+  end
 
   root 'todos#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
