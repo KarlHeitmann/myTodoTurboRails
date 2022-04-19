@@ -2,7 +2,7 @@ class TodosController < ApplicationController
   before_action :set_todo, only: %i[ show edit update destroy change_status ]
 
   def un_error
-    1/0
+    @todo.save
   end
 
   # GET /todos or /todos.json
