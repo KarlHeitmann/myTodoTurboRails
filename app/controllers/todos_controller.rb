@@ -1,6 +1,10 @@
 class TodosController < ApplicationController
   before_action :set_todo, only: %i[ show edit update destroy change_status ]
 
+  def un_error
+    1/0
+  end
+
   # GET /todos or /todos.json
   def index
     # @todos = Todo.all
