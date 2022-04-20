@@ -1,0 +1,25 @@
+<p style="color: green"><%= notice %></p>
+<p><%=@map[:lat] %></p>
+<p><%=@map[:lon] %></p>
+
+
+<div
+  class="leaflet-container"
+  style="min-height: 800px;" 
+  data-controller="map"
+  data-map-target="map.placeholder"
+  >
+</div>
+
+
+<!--HTML from anywhere-->
+<div data-controller="hello">
+  <input data-hello-target="name" type="text">
+
+  <button data-action="click->hello#greet">
+    Greet
+  </button>
+
+  <span data-hello-target="output">
+  </span>
+</div>

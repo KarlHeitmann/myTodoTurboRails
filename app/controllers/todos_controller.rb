@@ -2,6 +2,9 @@ class TodosController < ApplicationController
   before_action :set_todo, only: %i[ show edit update destroy change_status ]
 
   def mapa
+    @map = {
+      lat: -33.41510669581289, lon: -70.63198468627586
+    }
   end
 
   # GET /todos or /todos.json
